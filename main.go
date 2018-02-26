@@ -11,6 +11,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/oschwald/maxminddb-golang"
 	"github.com/rs/xid"
+	"xojoc.pw/useragent"
 
 	_ "github.com/lib/pq"
 )
@@ -61,6 +62,7 @@ const (
 
 func GetUserId(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
+	fmt.Print(params)
 
 	fingerPrint := params["fingerPrint"]
 	
@@ -109,8 +111,12 @@ func getIpInfo(strIp string) *City {
 	return &ipInfo
 }
 
-func getBrowser(strBrowser string) string {
-	return "CHROME"
+func getBrowser(strUserAgent string) string {
+	ua := useragent.Parse(strUserAgent)
+	if ua == nil {
+		return "UNKNOWN"
+	}
+	return ua.Name
 }
 
 func dbConfig() map[string]string {

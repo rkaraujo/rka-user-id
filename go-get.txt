@@ -2,3 +2,4 @@ go get github.com/gorilla/mux
 go get github.com/rs/xid
 go get github.com/oschwald/maxminddb-golang
 go get github.com/lib/pq
+go get xojoc.pw/useragent
