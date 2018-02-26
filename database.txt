@@ -1,0 +1,13 @@
+CREATE TABLE visitor_data
+(
+  id SERIAL NOT NULL,
+  finger_print character varying(255),
+  browser character varying(255),
+  city character varying(255),
+  state character varying(255),
+  country character varying(255),
+  user_id character varying(255),
+  created_at TIMESTAMP DEFAULT now()
+);
+
+ALTER TABLE visitor_data ADD CONSTRAINT uniquevdata UNIQUE (finger_print, browser, city, state, country);
