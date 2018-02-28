@@ -1,3 +1,5 @@
+CREATE DATABASE userid;
+
 CREATE TABLE visitor_data
 (
   id SERIAL NOT NULL,
